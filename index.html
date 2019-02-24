@@ -6,13 +6,84 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
         // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-        
+				
+				
+				main.innerHTML ='Inbox (' + window.geemails.length + ')';
+				var inbox = document.createElement('div');
+				inbox.id = 'inbox'
+				main.appendChild(inbox)
+
+				
+
+
+				for (var i=0; i<window.geemails.length; i++){
+					var outerBox = document.createElement('div');
+					outerBox.className = 'outerBox';
+
+
+
+
+					var messageBox = document.createElement('div');
+					
+					messageBox.className = 'messages';
+					
+					inbox.appendChild(messageBox);
+
+
+					var findMessageBox = document.getElementsByClassName('messages')[i];
+					console.log(findMessageBox)
+					
+
+					// working on click event
+
+					// var newFind = document.getElementsByClassName('messages');
+					// for(i=0;i<newFind.length;i ++){
+					// 	newFind[i].addEventListener('click', showMessage());
+					// }
+
+					// function showMessage(){
+					// 	if(findMessageBox.style.color === 'black'){
+					// 		findMessageBox.style.color = 'red';
+					// 	}else(findMessageBox.style.color = 'black')
+					// 	console.log('works')
+					// }
+
+
+					// click event above
+
+					var messageContentsSender = document.createElement('div');
+					messageContentsSender.className = 'sender';
+					messageContentsSender.innerHTML = window.geemails[i].sender;
+					findMessageBox.appendChild(messageContentsSender);
+
+					var messageContentsSubject = document.createElement('div');
+					messageContentsSubject.className = 'subject'
+					messageContentsSubject.innerHTML = window.geemails[i].subject;
+					findMessageBox.appendChild(messageContentsSubject);
+
+					var messageContentsDate = document.createElement('div');
+					messageContentsDate.innerHTML = window.geemails[i].date;
+					findMessageBox.appendChild(messageContentsDate);
+
+
+				}
+				// function showMessage(){
+				// 		if(this.style.color === 'black'){
+				// 			this.style.color = 'red';
+				// 		}else(this.style.color = 'black')
+				// 		console.log('works')
+				// 	}
+
       };
-    </script>
+		</script>
+		<link href="https://fonts.googleapis.com/css?family=Righteous|Ropa+Sans" rel="stylesheet">
 	</head>
 	<body>
+		<header>
+			<h1 id='title'>Gee-Mail</h1>
+		</header>
 		<div class="container" id="main">
-			Build Me!
+			Inbox
 		</div>
 	</body>
 </html>
