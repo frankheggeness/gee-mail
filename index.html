@@ -9,6 +9,7 @@
 				
 				
 				main.innerHTML ='Inbox (' + window.geemails.length + ')';
+				
 				var inbox = document.createElement('div');
 				inbox.id = 'inbox'
 				main.appendChild(inbox)
@@ -19,7 +20,11 @@
 				for (var i=0; i<window.geemails.length; i++){
 					var outerBox = document.createElement('div');
 					outerBox.className = 'outerBox';
+					inbox.appendChild(outerBox);
 
+					var findOuterBox = document.getElementsByClassName('outerBox')[i];
+
+				
 
 
 
@@ -27,7 +32,7 @@
 					
 					messageBox.className = 'messages';
 					
-					inbox.appendChild(messageBox);
+					outerBox.appendChild(messageBox);
 
 
 					var findMessageBox = document.getElementsByClassName('messages')[i];
@@ -62,8 +67,14 @@
 					findMessageBox.appendChild(messageContentsSubject);
 
 					var messageContentsDate = document.createElement('div');
+					messageContentsDate.className = 'date';
 					messageContentsDate.innerHTML = window.geemails[i].date;
 					findMessageBox.appendChild(messageContentsDate);
+
+					var messageContentsBody = document.createElement('div');
+					messageContentsBody.className = 'body';
+					messageContentsBody.innerHTML = window.geemails[i].body;
+					findOuterBox.appendChild(messageContentsBody);
 
 
 				}
@@ -73,7 +84,16 @@
 				// 		}else(this.style.color = 'black')
 				// 		console.log('works')
 				// 	}
-
+				setInterval(makeMessage, 2000);
+				function makeMessage(){
+				var newMessageBox = getNewMessage()
+				window.geemails.push(newMessageBox);
+				}
+				// setInterval(checkInbox, 100)
+				// function checkInbox(){
+				// 	main.innerHTML ='Inbox (' + window.geemails.length + ')';
+				// }
+		
       };
 		</script>
 		<link href="https://fonts.googleapis.com/css?family=Righteous|Ropa+Sans" rel="stylesheet">
