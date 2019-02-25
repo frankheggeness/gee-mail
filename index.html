@@ -5,56 +5,25 @@
     <script>
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+				// We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+				setInterval(checkCounter, 2000)
+				function checkCounter(){
+				counter.innerHTML ='(' + window.geemails.length + ')';
+				}
 				
-				
-				main.innerHTML ='Inbox (' + window.geemails.length + ')';
-				
-				var inbox = document.createElement('div');
-				inbox.id = 'inbox'
-				main.appendChild(inbox)
-
-				
-
-
 				for (var i=0; i<window.geemails.length; i++){
 					var outerBox = document.createElement('div');
 					outerBox.className = 'outerBox';
 					inbox.appendChild(outerBox);
-
 					var findOuterBox = document.getElementsByClassName('outerBox')[i];
-
 				
-
-
-
 					var messageBox = document.createElement('div');
 					
 					messageBox.className = 'messages';
 					
 					outerBox.appendChild(messageBox);
-
-
 					var findMessageBox = document.getElementsByClassName('messages')[i];
 					console.log(findMessageBox)
-					
-
-					// working on click event
-
-					// var newFind = document.getElementsByClassName('messages');
-					// for(i=0;i<newFind.length;i ++){
-					// 	newFind[i].addEventListener('click', showMessage());
-					// }
-
-					// function showMessage(){
-					// 	if(findMessageBox.style.color === 'black'){
-					// 		findMessageBox.style.color = 'red';
-					// 	}else(findMessageBox.style.color = 'black')
-					// 	console.log('works')
-					// }
-
-
-					// click event above
 
 					var messageContentsSender = document.createElement('div');
 					messageContentsSender.className = 'sender';
@@ -75,24 +44,42 @@
 					messageContentsBody.className = 'body';
 					messageContentsBody.innerHTML = window.geemails[i].body;
 					findOuterBox.appendChild(messageContentsBody);
-
-
 				}
-				// function showMessage(){
-				// 		if(this.style.color === 'black'){
-				// 			this.style.color = 'red';
-				// 		}else(this.style.color = 'black')
-				// 		console.log('works')
-				// 	}
-				setInterval(makeMessage, 2000);
+
+				setInterval(makeMessage, 5000)
 				function makeMessage(){
-				var newMessageBox = getNewMessage()
-				window.geemails.push(newMessageBox);
+					var newMessage = getNewMessage();
+
+					var newOuterBox = document.createElement('div');
+					newOuterBox.className = 'newOuterBox'
+					inbox.appendChild(newOuterBox);
+					var newMessageBox = document.createElement('div');
+					newMessageBox.className = 'messages';
+					newOuterBox.appendChild(newMessageBox);
+
+					var newMessageContentsSender = document.createElement('div');
+					newMessageContentsSender.className = 'sender';
+					newMessageContentsSender.innerHTML = newMessage.sender;
+					newMessageBox.appendChild(newMessageContentsSender);
+
+					var newMessageContentsSubject = document.createElement('div');
+					newMessageContentsSubject.className = 'subject';
+					newMessageContentsSubject.innerHTML = newMessage.subject;
+					newMessageBox.appendChild(newMessageContentsSubject);
+
+					var newMessageContentsDate = document.createElement('div');
+					newMessageContentsDate.className = 'date';
+					newMessageContentsDate.innerHTML = newMessage.date;
+					newMessageBox.appendChild(newMessageContentsDate);
+
+					var newMessageContentsBody = document.createElement('div');
+					newMessageContentsBody.className = 'body';
+					newMessageContentsBody.innerHTML = newMessage.body;
+					newMessageBox.appendChild(newMessageContentsBody);
+
+					window.geemails.push(newMessage);
 				}
-				// setInterval(checkInbox, 100)
-				// function checkInbox(){
-				// 	main.innerHTML ='Inbox (' + window.geemails.length + ')';
-				// }
+				
 		
       };
 		</script>
@@ -102,8 +89,18 @@
 		<header>
 			<h1 id='title'>Gee-Mail</h1>
 		</header>
-		<div class="container" id="main">
-			Inbox
+		<div id='content'>
+				<div class="container" id="main">
+						Inbox
+						<div id='counter'></div>
+					</div>
+					<div id='inbox'>
+
+					</div>
+					
 		</div>
+		
 	</body>
 </html>
+
+
