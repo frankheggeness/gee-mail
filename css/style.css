@@ -1,0 +1,38 @@
+#title{
+    font-size: 36px;
+    text-align: center;
+    font-family: 'Righteous', cursive;
+}
+header{
+    background-color: aqua;
+}
+body{
+    background-color: whitesmoke;
+}
+#main{
+    font-size: 25px;
+    font-family: 'Ropa Sans', sans-serif;
+}
+#inbox{
+    font-size: 16px;
+}
+.messages{
+    display: flex;
+    justify-content: space-between;
+    
+}
+.sender{
+    display: inline;
+}
+.subject{
+    display: inline;
+    text-align: center;
+}
+
+.messages{
+    color: black;
+}
+.outerBox{
+    border-style: solid;
+    border-color: black;
+}
