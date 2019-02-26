@@ -8,13 +8,17 @@ header{
 }
 body{
     background-color: whitesmoke;
+
 }
 #main{
     font-size: 25px;
     font-family: 'Ropa Sans', sans-serif;
 }
 #inbox{
-    font-size: 16px;
+    font-size: 18px;
+}
+#counter{
+    display: inline
 }
 .messages{
     display: flex;
@@ -23,10 +27,13 @@ body{
 }
 .sender{
     display: inline;
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 16px;
 }
 .subject{
     display: inline;
     text-align: center;
+    font-family: 'Ropa Sans', sans-serif;
 }
 
 .messages{
@@ -35,4 +42,14 @@ body{
 .outerBox{
     border-style: solid;
     border-color: black;
+    padding: 2px;
+}
+
+.newOuterBox{
+    border-style: solid;
+    border-color: black;
+    padding: 2px;
+}
+.body{
+    display: none;
 }
