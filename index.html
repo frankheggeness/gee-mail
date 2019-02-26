@@ -6,7 +6,7 @@
       window.onload = function(){
         // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
 				// We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
-				setInterval(checkCounter, 2000)
+				setInterval(checkCounter, 500)
 				function checkCounter(){
 				counter.innerHTML ='(' + window.geemails.length + ')';
 				}
@@ -44,6 +44,20 @@
 					messageContentsBody.className = 'body';
 					messageContentsBody.innerHTML = window.geemails[i].body;
 					findOuterBox.appendChild(messageContentsBody);
+
+					findOuterBox.addEventListener('click', showMess);
+
+
+					function showMess(){
+						var findBody = this.querySelector('.body')
+						if(findBody.style.display === 'block'){
+							findBody.style.display = 'none';
+						}else{
+							findBody.style.display = 'block';
+						}
+					}
+
+
 				}
 
 				setInterval(makeMessage, 5000)
@@ -75,7 +89,22 @@
 					var newMessageContentsBody = document.createElement('div');
 					newMessageContentsBody.className = 'body';
 					newMessageContentsBody.innerHTML = newMessage.body;
-					newMessageBox.appendChild(newMessageContentsBody);
+					newOuterBox.appendChild(newMessageContentsBody);
+
+					// var findNewOBox = document.getElementsByClassName('newOuterBox'[0]);
+					// findNewOBox.addEventListener('click', showBody)
+
+					// function showBody(){
+					// 	var findBody = this.querySelector('.body')
+					// 	if (findBody.style.display === 'block'){
+					// 		findBody.style.display = 'none'
+					// 	} else{
+					// 		findBody.style.display = 'block';
+					// 	}
+
+					// }
+
+
 
 					window.geemails.push(newMessage);
 				}
